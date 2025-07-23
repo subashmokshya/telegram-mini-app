@@ -6,7 +6,7 @@ dotenv.config();
 import {
   runSessionOnce,
   closeAllPositions
-} from './botCore'; // you'll modularize these
+} from '../botCore'; // you'll modularize these
 
 const app = express();
 const PORT = process.env.PORT || 3000;
