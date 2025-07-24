@@ -1,48 +1,19 @@
 {
-  "name": "telegram-mini-app",
-  "version": "0.1.0",
-  "private": true,
+  "name": "telegram-mini-backend",
+  "version": "1.0.0",
   "type": "module",
+  "main": "dist/api-server.js",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "dev:api": "ts-node-esm --project tsconfig.backend.json api/api-server.ts"
+    "build": "tsc --project tsconfig.backend.json",
+    "start": "node dist/api-server.js"
   },
   "dependencies": {
+    "express": "^4.18.2",
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
-    "express": "^4.18.2",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0",
-    "react-scripts": "^5.0.1",
-    "typescript": "^4.9.5",
-    "web-vitals": "^2.1.4"
+    "decimal.js": "^10.4.3"
   },
   "devDependencies": {
-    "@tailwindcss/postcss": "^4.1.11",
-    "@types/cors": "^2.8.19",
-    "@types/dotenv": "^6.1.1",
-    "@types/express": "^4.17.23",
-    "@types/node": "^16.18.126",
-    "@types/react": "^19.1.8",
-    "@types/react-dom": "^19.1.6",
-    "autoprefixer": "^10.4.21",
-    "postcss": "^8.5.6",
-    "tailwindcss": "^3.4.3",
-    "ts-node": "^10.9.2"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+    "typescript": "^5.4.5"
   }
 }

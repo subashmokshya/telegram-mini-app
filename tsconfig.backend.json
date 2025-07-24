@@ -1,14 +1,13 @@
 {
   "compilerOptions": {
-    "module": "ESNext",
     "target": "ES2020",
+    "module": "CommonJS",
+    "outDir": "dist",
+    "rootDir": "api",
     "moduleResolution": "node",
     "esModuleInterop": true,
-    "moduleDetection": "force",
-    "skipLibCheck": true,
     "resolveJsonModule": true,
-    "allowSyntheticDefaultImports": true,
     "strict": false
   },
-  "include": ["api/**/*.ts", "botCore/**/*.ts"]
+  "include": ["api/**/*.ts", "botCore/**/*.ts", "../30m1hr/**/*.ts"]
 }

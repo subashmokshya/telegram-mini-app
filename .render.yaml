@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: telegram-bot-api
+    env: node
+    rootDir: telegram-mini-app
+    buildCommand: npm run build
+    startCommand: npm start
+    envVars:
+      - key: PORT
+        value: 10000
