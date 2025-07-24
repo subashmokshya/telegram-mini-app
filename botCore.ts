@@ -1,15 +1,23 @@
 // botCore.ts
+
 import Decimal from 'decimal.js';
 import {
-  initBlockchain, getTotalPnL, getPositions,
-  runSignalCheckAndOpen, closeAllPositions as _closeAllPositions,
-  closePosition, client, aptos, account, priceFeeds
-} from '../blockchain';
+  initBlockchain,
+  getTotalPnL,
+  getPositions,
+  runSignalCheckAndOpen,
+  closeAllPositions as _closeAllPositions,
+  closePosition,
+  client,
+  aptos,
+  account,
+  priceFeeds
+} from '../../30m1hr/blockchain.ts';
 
-import { checkAndCloseForTP } from '../tpsl';
-import { guessMarketRegime } from '../regime';
-import { getCachedOHLCV } from '../binanceHistorical';
-import { getBudgetAndLeverage } from '../BudgetAndLeverage';
+import { checkAndCloseForTP } from '../tpsl.ts';
+import { guessMarketRegime } from '../regime.ts';
+import { getCachedOHLCV } from '../binanceHistorical.ts';
+import { getBudgetAndLeverage } from '../BudgetAndLeverage.ts';
 
 export async function runSessionOnce(): Promise<void> {
   const maxBudget = new Decimal(500);
