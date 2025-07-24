@@ -14,10 +14,10 @@ import {
   priceFeeds
 } from '../../30m1hr/blockchain.ts';
 
-import { checkAndCloseForTP } from '../tpsl.ts';
-import { guessMarketRegime } from '../regime.ts';
-import { getCachedOHLCV } from '../binanceHistorical.ts';
-import { getBudgetAndLeverage } from '../BudgetAndLeverage.ts';
+import { checkAndCloseForTP } from '../../30m1hr/tpsl.ts';
+import { guessMarketRegime } from '../../30m1hr/regime.ts';
+import { getCachedOHLCV } from '../../30m1hr/binanceHistorical.ts';
+import { getBudgetAndLeverage } from '../../30m1hr/BudgetAndLeverage.ts';
 
 export async function runSessionOnce(): Promise<void> {
   const maxBudget = new Decimal(500);
