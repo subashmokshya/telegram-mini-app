@@ -1,0 +1,52 @@
+{
+  "ENA_USD": {
+    "history": [
+      "loss"
+    ],
+    "cooldownUntil": 1750353701568
+  },
+  "SEI_USD": {
+    "history": [
+      "win"
+    ],
+    "cooldownUntil": 1750392199902
+  },
+  "BOME_USD": {
+    "history": [
+      "loss"
+    ],
+    "cooldownUntil": 1750392221384
+  },
+  "EIGEN_USD": {
+    "history": [
+      "loss",
+      "win",
+      "win"
+    ],
+    "cooldownUntil": 1750397174475
+  },
+  "TIA_USD": {
+    "history": [
+      "loss"
+    ],
+    "cooldownUntil": 1750398864670
+  },
+  "KAITO_USD": {
+    "history": [
+      "win"
+    ],
+    "cooldownUntil": 1750414998124
+  },
+  "AVAX_USD": {
+    "history": [
+      "win"
+    ],
+    "cooldownUntil": 1750571777896
+  },
+  "WIF_USD": {
+    "history": [
+      "win"
+    ],
+    "cooldownUntil": 1750572957826
+  }
+}

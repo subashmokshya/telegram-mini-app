@@ -1,0 +1,42 @@
+{
+    "name": "ai_agent_trading_bot",
+    "version": "1.0.0",
+    "scripts": {
+        "dev": "ts-node --transpile-only index.ts",
+        "server": "ts-node --transpile-only index1.ts",
+        "start:pm2": "pm2 start npm --name trading-bot -- run server",
+        "start:local": "npm run dev"
+    },
+    "ts-node": {
+        "transpileOnly": true
+    },
+    "dependencies": {
+        "@merkletrade/ts-sdk": "^1.0.3",
+        "aptos": "^1.21.0",
+        "axios": "^1.10.0",
+        "ccxt": "^4.4.91",
+        "cors": "^2.8.5",
+        "csv-parse": "^5.6.0",
+        "decimal.js": "^10.5.0",
+        "dotenv": "^10.0.0",
+        "express": "^5.1.0",
+        "node-fetch": "^2.6.0",
+        "node-telegram-bot-api": "^0.66.0",
+        "openai": "^4.97.0",
+        "pm2": "^6.0.5",
+        "technicalindicators": "^3.1.0"
+    },
+    "overrides": {
+        "@aptos-labs/ts-sdk": "^1.33.1"
+    },
+    "devDependencies": {
+        "@types/axios": "^0.9.36",
+        "@types/cors": "^2.8.19",
+        "@types/decimal.js": "^0.0.32",
+        "@types/dotenv": "^6.1.1",
+        "@types/express": "^5.0.3",
+        "@types/node-telegram-bot-api": "^0.64.9",
+        "ts-node": "^10.9.1",
+        "typescript": "^5.0.0"
+    }
+}

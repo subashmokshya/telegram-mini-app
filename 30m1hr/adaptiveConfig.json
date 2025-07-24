@@ -1,0 +1,42 @@
+{
+  "riskPct": 2,                  
+  "targetROI": 0.5,               
+  "atrPeriod": 14,
+  "minFallbackScore": 0.7,
+  "atrMultByRegime": {
+    "bullish": 1.0,
+    "neutral": 1.5,
+    "bearish": 2.0,
+    "flat_or_choppy": 1.5,
+    "volatile_uncertain": 2.0
+  },
+  "maxLeverageByRegime": {
+    "bullish": 130,
+    "neutral": 100,
+    "bearish": 100,
+    "flat_or_choppy": 100,
+    "volatile_uncertain": 100
+  },
+  "budgetByRegime": {
+    "bullish": 40,
+    "neutral": 30,
+    "bearish": 40,
+    "flat_or_choppy": 30,
+    "volatile_uncertain": 30
+  },
+  "minRRR": 1.2,
+  "rrrMinByRegime": {
+    "bullish": 2.0,
+    "neutral": 1.5,
+    "bearish": 1.25,
+    "flat_or_choppy": 1.5,
+    "volatile_uncertain": 1.25
+  },
+  "enabledRegimes": [
+    "bullish",
+    "neutral",
+    "bearish",
+    "flat_or_choppy",
+    "volatile_uncertain"
+  ]
+}

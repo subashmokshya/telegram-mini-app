@@ -1,0 +1,40 @@
+{
+    "compilerOptions": {
+      // Target modern JS
+      "target": "ES2020",
+      // Node‐style modules
+      "module": "commonjs",
+      "moduleResolution": "node",
+      // Allow default imports from CJS
+      "esModuleInterop": true,
+      "allowSyntheticDefaultImports": true,
+      // Strong type checks
+      "strict": true,
+      // Don’t choke on missing .d.ts in node_modules
+      "skipLibCheck": true,
+      "forceConsistentCasingInFileNames": true,
+      // If you import JSON
+      "resolveJsonModule": true,
+      // Emit source maps (helpful under ts-node)
+      "sourceMap": true,
+      // Output dir if you ever compile to JS
+      "outDir": "dist"
+    },
+  
+    // Include your ambient declarations + all .ts sources
+    "include": [
+      "global.d.ts",
+      "**/*.ts"
+    ],
+  
+    "exclude": [
+      "node_modules",
+      "dist"
+    ],
+  
+    // --- **ts-node** SETTINGS ---
+    // This tells ts-node to load all files in "include" (so it sees global.d.ts)
+    "ts-node": {
+      "files": true
+    }
+  }
