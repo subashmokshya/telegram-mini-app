@@ -76,11 +76,22 @@ export function resolveSymbolFromPairType(pairType: string): string | undefined 
 }
 
 export async function initBlockchain() {
-  // ✅ Pull config
+  // ✅ Load testnet config
   const config = await MerkleClientConfig.testnet();
 
-  // ✅ Workaround: force pass the config despite types
-  client = new (MerkleClient as any)(config.merkleConfig);
+  console.log("🧪 Loaded MerkleClientConfig:", JSON.stringify(config, null, 2));
+
+  // ✅ If merkleConfig is undefined, apply fallback manually
+  const fallbackMerkleConfig = {
+    fetchFn: fetch,
+    endpoints: ["https://app.testnet.merkle.trade/trade/"], // can include multiple endpoints if needed
+    network: "testnet",
+  };
+
+  const merkleConfig = config?.merkleConfig ?? fallbackMerkleConfig;
+
+  // ✅ Force cast workaround to allow config injection
+  client = new (MerkleClient as any)(merkleConfig);
 
   aptos = new Aptos(config.aptosConfig);
 
