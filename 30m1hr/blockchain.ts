@@ -76,11 +76,11 @@ export function resolveSymbolFromPairType(pairType: string): string | undefined 
 }
 
 export async function initBlockchain() {
-  // ✅ This must finish fully before constructing MerkleClient
+  // ✅ Pull config
   const config = await MerkleClientConfig.testnet();
 
-  // ✅ This now pulls config from internal store (no args)
-  client = new MerkleClient(); 
+  // ✅ Workaround: force pass the config despite types
+  client = new (MerkleClient as any)(config.merkleConfig);
 
   aptos = new Aptos(config.aptosConfig);
 
@@ -89,7 +89,7 @@ export async function initBlockchain() {
 
   const formattedKey = PrivateKey.formatPrivateKey(rawKey, PrivateKeyVariants.Ed25519);
   account = Account.fromPrivateKey({
-    privateKey: new Ed25519PrivateKey(formattedKey)
+    privateKey: new Ed25519PrivateKey(formattedKey),
   });
 
   console.log("✅ Blockchain initialized.");
