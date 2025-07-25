@@ -76,8 +76,12 @@ export function resolveSymbolFromPairType(pairType: string): string | undefined 
 }
 
 export async function initBlockchain() {
-  const config = await MerkleClientConfig.testnet(); 
+  // ✅ This must finish fully before constructing MerkleClient
+  const config = await MerkleClientConfig.testnet();
+
+  // ✅ This now pulls config from internal store (no args)
   client = new MerkleClient(); 
+
   aptos = new Aptos(config.aptosConfig);
 
   const rawKey = process.env.APTOS_PRIVATE_KEY;

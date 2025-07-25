@@ -1,4 +1,4 @@
-import express from 'express';
+import express, { Request, Response } from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 dotenv.config();
@@ -6,7 +6,7 @@ dotenv.config();
 import {
   runSessionOnce,
   closeAllPositions
-} from '../botcore/botCore'; // you'll modularize these
+} from '../botcore/botCore';
 
 const app = express();
 const PORT = process.env.PORT || 5001;
@@ -14,7 +14,7 @@ const PORT = process.env.PORT || 5001;
 app.use(cors());
 app.use(express.json());
 
-app.post('/run-session', async (_req, res) => {
+app.post('/run-session', async (_req: Request, res: Response) => {
   try {
     await runSessionOnce();
     res.json({ success: true });
@@ -23,7 +23,7 @@ app.post('/run-session', async (_req, res) => {
   }
 });
 
-app.post('/close-all', async (_req, res) => {
+app.post('/close-all', async (_req: Request, res: Response) => {
   try {
     await closeAllPositions();
     res.json({ success: true });
