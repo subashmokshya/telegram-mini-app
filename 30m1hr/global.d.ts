@@ -28,10 +28,9 @@ declare module '@merkletrade/ts-sdk' {
   
     export class MerkleClient {
       config: any;
-      getUsdcBalance(arg0: { accountAddress: import("@aptos-labs/ts-sdk").AccountAddress; }) {
-          throw new Error("Method not implemented.");
-      }
-      constructor(cfg: any);
+      getUsdcBalance: (arg0: {
+        accountAddress: import("@aptos-labs/ts-sdk").AccountAddress;
+      }) => any;      
   
       /** Quick index‐price lookup */
       api: {

@@ -3,7 +3,6 @@ import fs from 'fs';
 import path from 'path';
 import { execSync } from 'child_process';
 import { Regime } from './regime';
-import { ScaledThresholds } from './scale';
 import adaptiveConfig from './adaptiveConfig.json';
 
 // ─── Full OptimizedEntry definition ─────────────────────────────────────────
@@ -41,18 +40,18 @@ export interface OptimizedEntry {
   timestamp?:         string;
 }
 
-// ─── Constants & cache ─────────────────────────────────────────────────────────
+// ─── Constants & cache ─────────────────────────────────────────────────────
 const CONFIG_PATH = path.resolve(__dirname, 'optimizedConfigs.json');
 const RELOAD_INTERVAL_MS = 10 * 60 * 1000;
 const CACHE: Record<string, OptimizedEntry> = {};
 let lastLoaded = 0;
 
-// ─── Helpers ───────────────────────────────────────────────────────────────────
+// ─── Helpers ────────────────────────────────────────────────────────────────
 function normalizeSymbol(symbol: string): string {
   return symbol.toUpperCase().replace(/USDT$/, '_USD');
 }
 
-// ─── Load & cache configs from disk ─────────────────────────────────────────────
+// ─── Load & cache configs from disk ─────────────────────────────────────────
 function loadConfigs(forceReload = false): Record<string, OptimizedEntry> {
   const now = Date.now();
   if (!forceReload && Object.keys(CACHE).length && now - lastLoaded < RELOAD_INTERVAL_MS) {
@@ -77,7 +76,7 @@ function loadConfigs(forceReload = false): Record<string, OptimizedEntry> {
   }
 }
 
-// ─── Public API ────────────────────────────────────────────────────────────────
+// ─── Public API ─────────────────────────────────────────────────────────────
 
 /** Get all configs (optionally force reload) */
 export function getAllOptimizedConfigs(
@@ -96,26 +95,6 @@ export function getOptimizedConfig(
   return configs[key];
 }
 
-/** Map OptimizedEntry → ScaledThresholds */
-export function getOptimizedThresholds(
-  symbol: string,
-  regime: Regime
-): ScaledThresholds | null {
-  const cfg = getOptimizedConfig(symbol, regime);
-  if (!cfg) return null;
-  return {
-    signalScoreMin:     cfg.signalScoreMin,
-    divergenceScoreMin: cfg.divergenceScoreMin,
-    volumePctMin:       cfg.volumePctMin,
-    atrPctMin:          cfg.atrPctMin,
-    adxMin:             cfg.adxMin,
-    macdHistMin:        cfg.macdHistMin,
-    emaSlopeMin:        cfg.emaSlopeMin,
-    rsiOverbought:      cfg.rsiOverbought,
-    rsiOversold:        cfg.rsiOversold,
-  };
-}
-
 /** Get or generate full config via gridSearch.ts */
 export function getFullConfig(
   symbol: string,
@@ -126,7 +105,10 @@ export function getFullConfig(
 
   const key = `${normalizeSymbol(symbol)}_${regime}`;
   console.warn(`⚠️ missing config ${key} — running gridSearch…`);
-  const leverageDefault: number = adaptiveConfig.leverageStrategy[regime] ?? 1;
+
+  // Fallback to 1x leverage if not defined elsewhere
+  const leverageDefault = 1;
+
   execSync(
     `npx ts-node gridSearch.ts ${regime} ${normalizeSymbol(symbol)} ${leverageDefault}`,
     { cwd: __dirname, stdio: 'inherit' }
