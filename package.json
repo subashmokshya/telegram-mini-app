@@ -4,7 +4,6 @@
   "type": "commonjs",
   "main": "build/api/api-server.js",
   "scripts": {
-    "postinstall": "npm install",
     "build": "tsc --project tsconfig.backend.json",
     "start": "node build/api/api-server.js"
   },
